@@ -1,0 +1,15 @@
+.sidebar {
+  background-color: #567;
+  color: #fff;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: var(--sidebar-width);
+  padding: 1rem;
+}
+
+.sidebar nav a {
+  display: block;
+  padding-block: 0.5rem;
+}
