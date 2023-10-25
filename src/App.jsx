@@ -4,9 +4,11 @@ import Sidebar from './components/sidebar/sidebar'
 
 export default function App() {
   return (
-    <div className="container">
+    <>
       <Sidebar />
-      <Outlet />
-    </div>
+      <div className="mycontainer">
+        <Outlet />
+      </div>
+    </>
   )
 }
