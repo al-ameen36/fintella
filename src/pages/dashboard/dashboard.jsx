@@ -1,124 +1,161 @@
+import { faArrowUp, faBell, faCheck, faClock, faCog, faEllipsis, faHeart, faSearch, faUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, LinearScale, CategoryScale, BarElement, LineElement, PointElement } from "chart.js";
+import { Bar, Line } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend, LinearScale, CategoryScale, BarElement, LineElement, PointElement);
+
+function BarChart() {
+    return (
+        <Bar
+            data={{
+                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Customers",
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderRadius: 4,
+                    borderSkipped: false,
+                    backgroundColor: "#fff",
+                    data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+                    maxBarThickness: 6
+                },],
+            }
+            }
+            options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                        },
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 500,
+                            beginAtZero: true,
+                            padding: 15,
+                            font: {
+                                size: 14,
+                                family: "Open Sans",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                            color: "#fff"
+                        },
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false
+                        },
+                        ticks: {
+                            display: false
+                        },
+                    },
+                },
+            }}
+        />
+    )
+}
+
+
+function LineChart() {
+    return (
+        <Line
+            data={
+                {
+                    labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    datasets: [
+                        {
+                            label: "Sales",
+                            tension: 0.4,
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            borderSkipped: false,
+                            borderColor: 'darkred',
+                            data: [150, 200, 100, 220, 300, 100, 200, 230, 300],
+                            maxBarThickness: 6
+                        },
+                        {
+                            label: "Sales",
+                            tension: 0.4,
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            borderSkipped: false,
+                            borderColor: 'lime',
+                            data: [350, 200, 200, 320, 500, 300, 400, 300, 500],
+                            maxBarThickness: 6
+                        },
+                    ],
+                }
+            }
+            options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                        },
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 500,
+                            beginAtZero: true,
+                            padding: 15,
+                            font: {
+                                size: 14,
+                                family: "Open Sans",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                            color: "#111"
+                        },
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false
+                        },
+                    },
+                },
+            }}
+        />
+    )
+}
+
 
 export default function Dashboard() {
     return (
         <div className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-            <nav className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" >
-                <div className="container-fluid py-1 px-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                            <li className="breadcrumb-item text-sm"><a className="opacity-5 text-dark" href="">Pages</a></li>
-                            <li className="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
-                        </ol>
-                        <h6 className="font-weight-bolder mb-0">Dashboard</h6>
-                    </nav>
-                    <div className="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                        <div className="ms-md-auto pe-md-3 d-flex align-items-center">
-                            <div className="input-group">
-                                <span className="input-group-text text-body"><i className="fas fa-search" aria-hidden="true"></i></span>
-                                <input type="text" className="form-control" placeholder="Type here..." />
-                            </div>
-                        </div>
-                        <ul className="navbar-nav  justify-content-end">
-                            <li className="nav-item d-flex align-items-center">
-                                <a className="btn btn-outline-primary btn-sm mb-0 me-3" href="https://www.creative-tim.com/builder?ref=navbar-soft-ui-dashboard">Online Builder</a>
-                            </li>
-                            <li className="nav-item d-flex align-items-center">
-                                <a href="" className="nav-link text-body font-weight-bold px-0">
-                                    <i className="fa fa-user me-sm-1"></i>
-                                    <span className="d-sm-inline d-none">Sign In</span>
-                                </a>
-                            </li>
-                            <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
-                                <a href="" className="nav-link text-body p-0" id="iconNavbarSidenav">
-                                    <div className="sidenav-toggler-inner">
-                                        <i className="sidenav-toggler-line"></i>
-                                        <i className="sidenav-toggler-line"></i>
-                                        <i className="sidenav-toggler-line"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            <li className="nav-item px-3 d-flex align-items-center">
-                                <a href="" className="nav-link text-body p-0">
-                                    <i className="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                                </a>
-                            </li>
-                            <li className="nav-item dropdown pe-2 d-flex align-items-center">
-                                <a href="" className="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i className="fa fa-bell cursor-pointer"></i>
-                                </a>
-                                <ul className="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                                    <li className="mb-2">
-                                        <a className="dropdown-item border-radius-md" href="">
-                                            <div className="d-flex py-1">
-                                                <div className="my-auto">
-                                                    <img src="src/assets/img/team-2.jpg" className="avatar avatar-sm  me-3 " />
-                                                </div>
-                                                <div className="d-flex flex-column justify-content-center">
-                                                    <h6 className="text-sm font-weight-normal mb-1">
-                                                        <span className="font-weight-bold">New message</span> from Laur
-                                                    </h6>
-                                                    <p className="text-xs text-secondary mb-0 ">
-                                                        <i className="fa fa-clock me-1"></i>
-                                                        13 minutes ago
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li className="mb-2">
-                                        <a className="dropdown-item border-radius-md" href="">
-                                            <div className="d-flex py-1">
-                                                <div className="my-auto">
-                                                    <img src="src/assets/img/small-logos/logo-spotify.svg" className="avatar avatar-sm bg-gradient-dark  me-3 " />
-                                                </div>
-                                                <div className="d-flex flex-column justify-content-center">
-                                                    <h6 className="text-sm font-weight-normal mb-1">
-                                                        <span className="font-weight-bold">New album</span> by Travis Scott
-                                                    </h6>
-                                                    <p className="text-xs text-secondary mb-0 ">
-                                                        <i className="fa fa-clock me-1"></i>
-                                                        1 day
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item border-radius-md" href="">
-                                            <div className="d-flex py-1">
-                                                <div className="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                                                    <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                        <title>credit-card</title>
-                                                        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fillRule="nonzero">
-                                                                <g transform="translate(1716.000000, 291.000000)">
-                                                                    <g transform="translate(453.000000, 454.000000)">
-                                                                        <path className="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                                                        <path className="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                                                                    </g>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                                <div className="d-flex flex-column justify-content-center">
-                                                    <h6 className="text-sm font-weight-normal mb-1">
-                                                        Payment successfully completed
-                                                    </h6>
-                                                    <p className="text-xs text-secondary mb-0 ">
-                                                        <i className="fa fa-clock me-1"></i>
-                                                        2 days
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
             <div className="container-fluid py-4">
                 <div className="row">
                     <div className="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -129,7 +166,7 @@ export default function Dashboard() {
                                         <div className="numbers">
                                             <p className="text-sm mb-0 text-capitalize font-weight-bold">Today&rsquo;s Money</p>
                                             <h5 className="font-weight-bolder mb-0">
-                                                $53,000
+                                                &#8358;853,000
                                                 <span className="text-success text-sm font-weight-bolder">+55%</span>
                                             </h5>
                                         </div>
@@ -149,9 +186,9 @@ export default function Dashboard() {
                                 <div className="row">
                                     <div className="col-8">
                                         <div className="numbers">
-                                            <p className="text-sm mb-0 text-capitalize font-weight-bold">Today&rsquo;s Users</p>
+                                            <p className="text-sm mb-0 text-capitalize font-weight-bold">Today&rsquo;s Customers</p>
                                             <h5 className="font-weight-bolder mb-0">
-                                                2,300
+                                                300
                                                 <span className="text-success text-sm font-weight-bolder">+3%</span>
                                             </h5>
                                         </div>
@@ -195,7 +232,7 @@ export default function Dashboard() {
                                         <div className="numbers">
                                             <p className="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
                                             <h5 className="font-weight-bolder mb-0">
-                                                $103,430
+                                                &#8358;853,430
                                                 <span className="text-success text-sm font-weight-bolder">+5%</span>
                                             </h5>
                                         </div>
@@ -210,61 +247,17 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className="row mt-4">
-                    <div className="col-lg-7 mb-lg-0 mb-4">
-                        <div className="card">
-                            <div className="card-body p-3">
-                                <div className="row">
-                                    <div className="col-lg-6">
-                                        <div className="d-flex flex-column h-100">
-                                            <p className="mb-1 pt-2 text-bold">Built by developers</p>
-                                            <h5 className="font-weight-bolder">Soft UI Dashboard</h5>
-                                            <p className="mb-5">From colors, cards, typography to complex elements, you will find the full documentation.</p>
-                                            <a className="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="">
-                                                Read More
-                                                <i className="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-                                        <div className="bg-gradient-primary border-radius-lg h-100">
-                                            <img src="src/assets/img/shapes/waves-white.svg" className="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves" />
-                                            <div className="position-relative d-flex align-items-center justify-content-center h-100">
-                                                <img className="w-100 position-relative z-index-2 pt-4" src="src/assets/img/illustrations/rocket-white.png" alt="rocket" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-5">
-                        <div className="card h-100 p-3">
-                            <div className="overflow-hidden position-relative border-radius-lg bg-cover h-100" style={{ backgroundImage: "url('src/assets/img/ivancik.jpg')" }}>
-                                <span className="mask bg-gradient-dark"></span>
-                                <div className="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                                    <h5 className="text-white font-weight-bolder mb-4 pt-2">Work with the rockets</h5>
-                                    <p className="text-white">Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.</p>
-                                    <a className="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="">
-                                        Read More
-                                        <i className="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="row mt-4">
+                <div className="row mt-4 customers-metrics">
                     <div className="col-lg-5 mb-lg-0 mb-4">
                         <div className="card z-index-2">
                             <div className="card-body p-3">
                                 <div className="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
                                     <div className="chart">
-                                        <canvas id="chart-bars" className="chart-canvas" height="170"></canvas>
+                                        <BarChart />
                                     </div>
                                 </div>
-                                <h6 className="ms-2 mt-4 mb-0"> Active Users </h6>
-                                <p className="text-sm ms-2"> (<span className="font-weight-bolder">+23%</span>) than last week </p>
+                                <h6 className="ms-2 mt-4 mb-0"> Customers </h6>
+                                <p className="text-sm ms-2"> (<span className="font-weight-bolder">+3%</span>) than last week </p>
                                 <div className="container border-radius-lg">
                                     <div className="row">
                                         <div className="col-3 py-3 ps-0">
@@ -284,7 +277,7 @@ export default function Dashboard() {
                                                         </g>
                                                     </svg>
                                                 </div>
-                                                <p className="text-xs mt-1 mb-0 font-weight-bold">Users</p>
+                                                <p className="text-xs mt-1 mb-0 font-weight-bold">Customers</p>
                                             </div>
                                             <h4 className="font-weight-bolder">36K</h4>
                                             <div className="progress w-75">
@@ -336,7 +329,7 @@ export default function Dashboard() {
                                                 </div>
                                                 <p className="text-xs mt-1 mb-0 font-weight-bold">Sales</p>
                                             </div>
-                                            <h4 className="font-weight-bolder">435$</h4>
+                                            <h4 className="font-weight-bolder">435&#8358;</h4>
                                             <div className="progress w-75">
                                                 <div className="progress-bar bg-dark w-30" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
@@ -372,17 +365,18 @@ export default function Dashboard() {
                         </div>
                     </div>
                     <div className="col-lg-7">
-                        <div className="card z-index-2">
+                        <div className="card z-index-2 h-100">
                             <div className="card-header pb-0">
                                 <h6>Sales overview</h6>
                                 <p className="text-sm">
-                                    <i className="fa fa-arrow-up text-success"></i>
-                                    <span className="font-weight-bold">4% more</span> in 2021
+                                    <FontAwesomeIcon icon={faArrowUp} color="#A2D616" />{" "}
+                                    <span className="font-weight-bold">4% more</span> in 2023
                                 </p>
                             </div>
-                            <div className="card-body p-3">
+                            <div className="card-body p-3 h-100">
                                 <div className="chart">
-                                    <canvas id="chart-line" className="chart-canvas" height="300"></canvas>
+                                    {/* <canvas id="chart-line" className="chart-canvas" height="300"></canvas> */}
+                                    <LineChart />
                                 </div>
                             </div>
                         </div>
@@ -394,23 +388,11 @@ export default function Dashboard() {
                             <div className="card-header pb-0">
                                 <div className="row">
                                     <div className="col-lg-6 col-7">
-                                        <h6>Projects</h6>
-                                        <p className="text-sm mb-0">
-                                            <i className="fa fa-check text-info" aria-hidden="true"></i>
-                                            <span className="font-weight-bold ms-1">30 done</span> this month
+                                        <h6>Orders</h6>
+                                        <p className="text-sm mb-3">
+                                            <FontAwesomeIcon icon={faCheck} />
+                                            <span className="font-weight-bold ms-1">300 fullfilled</span> today
                                         </p>
-                                    </div>
-                                    <div className="col-lg-6 col-5 my-auto text-end">
-                                        <div className="dropdown float-lg-end pe-4">
-                                            <a className="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i className="fa fa-ellipsis-v text-secondary"></i>
-                                            </a>
-                                            <ul className="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                                                <li><a className="dropdown-item border-radius-md" href="">Action</a></li>
-                                                <li><a className="dropdown-item border-radius-md" href="">Another action</a></li>
-                                                <li><a className="dropdown-item border-radius-md" href="">Something else here</a></li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -419,9 +401,9 @@ export default function Dashboard() {
                                     <table className="table align-items-center mb-0">
                                         <thead>
                                             <tr>
-                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Companies</th>
-                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Members</th>
-                                                <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Budget</th>
+                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Customer</th>
+                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">No of items</th>
+                                                <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total</th>
                                                 <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Completion</th>
                                             </tr>
                                         </thead>
@@ -430,231 +412,80 @@ export default function Dashboard() {
                                                 <td>
                                                     <div className="d-flex px-2 py-1">
                                                         <div>
-                                                            <img src="src/assets/img/small-logos/logo-xd.svg" className="avatar avatar-sm me-3" alt="xd" />
+                                                            <FontAwesomeIcon icon={faUserCircle} fontSize={35} className="me-3" />
                                                         </div>
                                                         <div className="d-flex flex-column justify-content-center">
-                                                            <h6 className="mb-0 text-sm">Soft UI XD Version</h6>
+                                                            <h6 className="mb-0 text-sm">Muhammad Al-Ameen</h6>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div className="avatar-group mt-2">
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                                                            <img src="src/assets/img/team-1.jpg" alt="team1" />
-                                                        </a>
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                                                            <img src="src/assets/img/team-2.jpg" alt="team2" />
-                                                        </a>
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
-                                                            <img src="src/assets/img/team-3.jpg" alt="team3" />
-                                                        </a>
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                            <img src="src/assets/img/team-4.jpg" alt="team4" />
-                                                        </a>
-                                                    </div>
+                                                    <div className="avatar-group mt-2">20</div>
                                                 </td>
                                                 <td className="align-middle text-center text-sm">
-                                                    <span className="text-xs font-weight-bold"> $14,000 </span>
+                                                    <span className="text-xs font-weight-bold"> &#8358;104,000 </span>
                                                 </td>
-                                                <td className="align-middle">
-                                                    <div className="progress-wrapper w-75 mx-auto">
-                                                        <div className="progress-info">
-                                                            <div className="progress-percentage">
-                                                                <span className="text-xs font-weight-bold">60%</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div className="progress-bar bg-gradient-info w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
+                                                <td className="align-middle text-center"><span className="text-xs font-weight-bold text-success"> Fullfilled </span>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <div className="d-flex px-2 py-1">
                                                         <div>
-                                                            <img src="src/assets/img/small-logos/logo-atlassian.svg" className="avatar avatar-sm me-3" alt="atlassian" />
+                                                            <FontAwesomeIcon icon={faUserCircle} fontSize={35} className="me-3" />
                                                         </div>
                                                         <div className="d-flex flex-column justify-content-center">
-                                                            <h6 className="mb-0 text-sm">Add Progress Track</h6>
+                                                            <h6 className="mb-0 text-sm">Muhammad Al-Ameen</h6>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div className="avatar-group mt-2">
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                                                            <img src="src/assets/img/team-2.jpg" alt="team5" />
-                                                        </a>
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                            <img src="src/assets/img/team-4.jpg" alt="team6" />
-                                                        </a>
-                                                    </div>
+                                                    <div className="avatar-group mt-2">20</div>
                                                 </td>
                                                 <td className="align-middle text-center text-sm">
-                                                    <span className="text-xs font-weight-bold"> $3,000 </span>
+                                                    <span className="text-xs font-weight-bold"> &#8358;104,000 </span>
                                                 </td>
-                                                <td className="align-middle">
-                                                    <div className="progress-wrapper w-75 mx-auto">
-                                                        <div className="progress-info">
-                                                            <div className="progress-percentage">
-                                                                <span className="text-xs font-weight-bold">10%</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div className="progress-bar bg-gradient-info w-10" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
+                                                <td className="align-middle text-center"><span className="text-xs font-weight-bold text-success"> Fullfilled </span>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <div className="d-flex px-2 py-1">
                                                         <div>
-                                                            <img src="src/assets/img/small-logos/logo-slack.svg" className="avatar avatar-sm me-3" alt="team7" />
+                                                            <FontAwesomeIcon icon={faUserCircle} fontSize={35} className="me-3" />
                                                         </div>
                                                         <div className="d-flex flex-column justify-content-center">
-                                                            <h6 className="mb-0 text-sm">Fix Platform Errors</h6>
+                                                            <h6 className="mb-0 text-sm">Muhammad Al-Ameen</h6>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div className="avatar-group mt-2">
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                                                            <img src="src/assets/img/team-3.jpg" alt="team8" />
-                                                        </a>
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                            <img src="src/assets/img/team-1.jpg" alt="team9" />
-                                                        </a>
-                                                    </div>
+                                                    <div className="avatar-group mt-2">20</div>
                                                 </td>
                                                 <td className="align-middle text-center text-sm">
-                                                    <span className="text-xs font-weight-bold"> Not set </span>
+                                                    <span className="text-xs font-weight-bold"> &#8358;104,000 </span>
                                                 </td>
-                                                <td className="align-middle">
-                                                    <div className="progress-wrapper w-75 mx-auto">
-                                                        <div className="progress-info">
-                                                            <div className="progress-percentage">
-                                                                <span className="text-xs font-weight-bold">100%</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div className="progress-bar bg-gradient-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
+                                                <td className="align-middle text-center"><span className="text-xs font-weight-bold text-success"> Fullfilled </span>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <div className="d-flex px-2 py-1">
                                                         <div>
-                                                            <img src="src/assets/img/small-logos/logo-spotify.svg" className="avatar avatar-sm me-3" alt="spotify" />
+                                                            <FontAwesomeIcon icon={faUserCircle} fontSize={35} className="me-3" />
                                                         </div>
                                                         <div className="d-flex flex-column justify-content-center">
-                                                            <h6 className="mb-0 text-sm">Launch our Mobile App</h6>
+                                                            <h6 className="mb-0 text-sm">Muhammad Al-Ameen</h6>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <div className="avatar-group mt-2">
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                                                            <img src="src/assets/img/team-4.jpg" alt="user1" />
-                                                        </a>
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                                                            <img src="src/assets/img/team-3.jpg" alt="user2" />
-                                                        </a>
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
-                                                            <img src="src/assets/img/team-4.jpg" alt="user3" />
-                                                        </a>
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                            <img src="src/assets/img/team-1.jpg" alt="user4" />
-                                                        </a>
-                                                    </div>
+                                                    <div className="avatar-group mt-2">20</div>
                                                 </td>
                                                 <td className="align-middle text-center text-sm">
-                                                    <span className="text-xs font-weight-bold"> $20,500 </span>
+                                                    <span className="text-xs font-weight-bold"> &#8358;104,000 </span>
                                                 </td>
-                                                <td className="align-middle">
-                                                    <div className="progress-wrapper w-75 mx-auto">
-                                                        <div className="progress-info">
-                                                            <div className="progress-percentage">
-                                                                <span className="text-xs font-weight-bold">100%</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div className="progress-bar bg-gradient-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div className="d-flex px-2 py-1">
-                                                        <div>
-                                                            <img src="src/assets/img/small-logos/logo-jira.svg" className="avatar avatar-sm me-3" alt="jira" />
-                                                        </div>
-                                                        <div className="d-flex flex-column justify-content-center">
-                                                            <h6 className="mb-0 text-sm">Add the New Pricing Page</h6>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div className="avatar-group mt-2">
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                                                            <img src="src/assets/img/team-4.jpg" alt="user5" />
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td className="align-middle text-center text-sm">
-                                                    <span className="text-xs font-weight-bold"> $500 </span>
-                                                </td>
-                                                <td className="align-middle">
-                                                    <div className="progress-wrapper w-75 mx-auto">
-                                                        <div className="progress-info">
-                                                            <div className="progress-percentage">
-                                                                <span className="text-xs font-weight-bold">25%</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div className="progress-bar bg-gradient-info w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="25"></div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div className="d-flex px-2 py-1">
-                                                        <div>
-                                                            <img src="src/assets/img/small-logos/logo-invision.svg" className="avatar avatar-sm me-3" alt="invision" />
-                                                        </div>
-                                                        <div className="d-flex flex-column justify-content-center">
-                                                            <h6 className="mb-0 text-sm">Redesign New Online Shop</h6>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div className="avatar-group mt-2">
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                                                            <img src="src/assets/img/team-1.jpg" alt="user6" />
-                                                        </a>
-                                                        <a href="" className="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                            <img src="src/assets/img/team-4.jpg" alt="user7" />
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td className="align-middle text-center text-sm">
-                                                    <span className="text-xs font-weight-bold"> $2,000 </span>
-                                                </td>
-                                                <td className="align-middle">
-                                                    <div className="progress-wrapper w-75 mx-auto">
-                                                        <div className="progress-info">
-                                                            <div className="progress-percentage">
-                                                                <span className="text-xs font-weight-bold">40%</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div className="progress-bar bg-gradient-info w-40" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="40"></div>
-                                                        </div>
-                                                    </div>
+                                                <td className="align-middle text-center"><span className="text-danger text-xs font-weight-bold"> Pending </span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -663,12 +494,12 @@ export default function Dashboard() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-4 col-md-6">
+                    {/* <div className="col-lg-4 col-md-6">
                         <div className="card h-100">
                             <div className="card-header pb-0">
                                 <h6>Orders overview</h6>
                                 <p className="text-sm">
-                                    <i className="fa fa-arrow-up text-success" aria-hidden="true"></i>
+                                    <FontAwesomeIcon icon={faArrowUp} />
                                     <span className="font-weight-bold">24%</span> this month
                                 </p>
                             </div>
@@ -679,7 +510,7 @@ export default function Dashboard() {
                                             <i className="ni ni-bell-55 text-success text-gradient"></i>
                                         </span>
                                         <div className="timeline-content">
-                                            <h6 className="text-dark text-sm font-weight-bold mb-0">$2400, Design changes</h6>
+                                            <h6 className="text-dark text-sm font-weight-bold mb-0">&#8358;2400, Design changes</h6>
                                             <p className="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
                                         </div>
                                     </div>
@@ -731,7 +562,7 @@ export default function Dashboard() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <footer className="footer pt-3  ">
                     <div className="container-fluid">
@@ -741,7 +572,7 @@ export default function Dashboard() {
                                     © <script>
                                         document.write(new Date().getFullYear())
                                     </script>,
-                                    made with <i className="fa fa-heart"></i> by
+                                    made with <FontAwesomeIcon icon={faHeart} /> by
                                     <a href="https://www.creative-tim.com" className="font-weight-bold">Creative Tim</a>
                                     for a better web.
                                 </div>

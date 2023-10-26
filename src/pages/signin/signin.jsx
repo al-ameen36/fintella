@@ -1,5 +1,18 @@
 import signinBGImg from "../../assets/curved-images/curved6.jpg"
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSigninQuery } from '../../state/user.slice';
+
 export default function Signin() {
+    const user = useSigninQuery({
+        "phone": "+2349038808018",
+        "password": "123456"
+    })
+    const { cart, status } = useSelector((state) => state.cart);
+    useEffect(() => {
+        console.log(user);
+    }, [user])
+
     return <div>
         <div className="container position-sticky z-index-sticky top-0">
             <div className="row">

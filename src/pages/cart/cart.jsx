@@ -1,22 +1,28 @@
-import { Link } from 'react-router-dom';
-import styles from "./products.module.css"
+// import QRCode from "react-qr-code";
+
+// export default function Checkout() {
+//     return (
+//         <div>
+//             <h1>Checkout page</h1>
+//             <div style={{ background: 'white', padding: '16px' }}>
+//                 <QRCode value="hey" />
+//             </div>
+//         </div>
+//     )
+// }
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../state/cart.slice';
 import { useEffect } from 'react';
+import { getProducts } from '../../state/product.slice';
 
-const rows = [
-    { id: 1, name: "Product 1", price: 20000, instock: 121 },
-    { id: 2, name: "Product 2", price: 20000, instock: 121 },
-    { id: 3, name: "Product 3", price: 20000, instock: 121 },
-    { id: 4, name: "Product 4", price: 20000, instock: 121 },
-    { id: 5, name: "Product 5", price: 20000, instock: 121 },
-];
-
-export default function Products() {
+export default function Cart() {
     const dispatch = useDispatch();
     const { cart, status } = useSelector((state) => state.cart);
     useEffect(() => {
         console.log(cart);
+        // const products = dispatch(getProducts()).then((res) => {
+        //     console.log(res);
+        // })
     }, [cart])
 
     function handleAddToCart(product) {
@@ -90,3 +96,4 @@ export default function Products() {
         </div>
     )
 }
+

@@ -18,6 +18,7 @@ import Dashboard from './pages/dashboard/dashboard.jsx';
 import { store } from './state/store.js';
 import Products from './pages/products/products.jsx';
 import Product from './pages/products/product.jsx';
+import Cart from './pages/cart/cart.jsx'
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/product",
@@ -51,9 +56,9 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+  // </React.StrictMode>,
 )

@@ -27,11 +27,35 @@ a {
   text-decoration: none;
 }
 
-.navbar-vertical .navbar-nav .nav-link .icon {
-  height: 35px;
-  width: 35px;
+.icon-shape {
+  height: 40px !important;
+  width: 40px !important;
+}
+.icon-shape svg {
+  height: 80%;
+  width: 80%;
+}
+.icon-shape .ni {
+  top: -15px;
+}
+
+.customers-metrics .icon-shape {
+  height: 30px !important;
+  width: 30px !important;
+}
+
+.customers-metrics .icon-shape svg {
+  height: 50%;
+}
+
+.navbar-vertical.navbar-expand-xs .navbar-collapse {
+  height: calc(100vh - 200px) !important;
 }
 
 .mycontainer {
   margin-inline-start: var(--sidebar-width);
+}
+
+.chart {
+  height: 100%;
 }

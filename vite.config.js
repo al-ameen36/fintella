@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       "/api": {
-        target: "",
+        target: "https://fintella.itcentral.ng",
         changeOrigin: true,
         secure: false,
         ws: true,
