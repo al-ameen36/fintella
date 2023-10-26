@@ -1,9 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// First, create the thunk
 export const getProducts = createAsyncThunk("products/getAll", async () => {
-  // fintella.itcentral.ng
-  const res = (await fetch("https://fintella.itcentral.ng/products")).json();
+  const token = localStorage.getItem("token").replaceAll('"', "");
+  const res = (
+    await fetch("https://fintella.itcentral.ng/products?vendor_id=1", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+  ).json();
   return res;
 });
 

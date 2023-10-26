@@ -1,18 +1,27 @@
 import signinBGImg from "../../assets/curved-images/curved6.jpg"
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { useSigninQuery } from '../../state/user.slice';
+import { useEffect, useState } from 'react';
+import { useSigninMutation } from '../../state/user.slice';
 
 export default function Signin() {
-    const user = useSigninQuery({
-        "phone": "+2349038808018",
-        "password": "123456"
-    })
+    const [signin, result] = useSigninMutation()
+    const [formData, setFromData] = useState({ phone: null, password: null })
     const { cart, status } = useSelector((state) => state.cart);
     useEffect(() => {
-        console.log(user);
-    }, [user])
+        console.log(result);
+        localStorage.setItem("token", JSON.stringify(result.data?.token))
+    }, [result])
+    useEffect(() => {
+        console.log(formData);
+    }, [formData])
 
+    function handleSignin() {
+        signin(formData)
+    }
+
+    function handleChange(ev) {
+        setFromData(prev => ({ ...prev, [ev.target.name]: ev.target.value }))
+    }
     return <div>
         <div className="container position-sticky z-index-sticky top-0">
             <div className="row">
@@ -83,20 +92,20 @@ export default function Signin() {
                                     </div>
                                     <div className="card-body">
                                         <form role="form">
-                                            <label>Email</label>
+                                            <label>Phone Number</label>
                                             <div className="mb-3">
-                                                <input type="email" className="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon" />
+                                                <input onChange={handleChange} name="phone" type="email" className="form-control" placeholder="Phone Number" aria-label="Phone" aria-describedby="phone-addon" />
                                             </div>
                                             <label>Password</label>
                                             <div className="mb-3">
-                                                <input type="email" className="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon" />
+                                                <input onChange={handleChange} name="password" type="email" className="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon" />
                                             </div>
                                             <div className="form-check form-switch">
                                                 <input className="form-check-input" type="checkbox" id="rememberMe" defaultChecked="" />
                                                 <label className="form-check-label" htmlFor="rememberMe">Remember me</label>
                                             </div>
                                             <div className="text-center">
-                                                <button type="button" className="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
+                                                <button onClick={handleSignin} type="button" className="btn bg-gradient-info w-100 mt-4 mb-0" disabled={!formData.phone || !formData.password}>Sign in</button>
                                             </div>
                                         </form>
                                     </div>

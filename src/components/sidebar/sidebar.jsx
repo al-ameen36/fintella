@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import bgImg from "../../assets/curved-images/curved6.jpg"
 import logoImg from "../../assets/img/logo-ct-dark.png"
 
@@ -15,10 +16,10 @@ export default function Sidebar() {
             <div className="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link active" href="/">
+                        <Link className="nav-link active" to="/">
                             <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                    <title>shop </title>
+                                    <title>Dashboard </title>
                                     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                         <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fillRule="nonzero">
                                             <g transform="translate(1716.000000, 291.000000)">
@@ -32,13 +33,13 @@ export default function Sidebar() {
                                 </svg>
                             </div>
                             <span className="nav-link-text ms-1">Dashboard</span>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/products">
+                        <Link className="nav-link" to="/products">
                             <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                    <title>office</title>
+                                    <title>Products</title>
                                     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                         <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fillRule="nonzero">
                                             <g transform="translate(1716.000000, 291.000000)">
@@ -52,10 +53,10 @@ export default function Sidebar() {
                                 </svg>
                             </div>
                             <span className="nav-link-text ms-1">Products</span>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link  " href="/history">
+                        <Link className="nav-link" to="/history">
                             <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg">
                                     <title>credit-card</title>
@@ -72,54 +73,9 @@ export default function Sidebar() {
                                 </svg>
                             </div>
                             <span className="nav-link-text ms-1">History</span>
-                        </a>
+                        </Link>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link  " href="../pages/rtl.html">
-                            <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                                <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                    <title>Shopping Cart</title>
-                                    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                        <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fillRule="nonzero">
-                                            <g transform="translate(1716.000000, 291.000000)">
-                                                <g transform="translate(304.000000, 151.000000)">
-                                                    <polygon className="color-background opacity-6" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667"></polygon>
-                                                    <path className="color-background opacity-6" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"></path>
-                                                    <path className="color-background" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z"></path>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </div>
-                            <span className="nav-link-text ms-1">RTL</span>
-                        </a>
-                    </li>
-                    <li className="nav-item mt-3">
-                        <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link  " href="../pages/profile.html">
-                            <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                                <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                    <title>customer-support</title>
-                                    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                        <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fillRule="nonzero">
-                                            <g transform="translate(1716.000000, 291.000000)">
-                                                <g transform="translate(1.000000, 0.000000)">
-                                                    <path className="color-background opacity-6" d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z"></path>
-                                                    <path className="color-background" d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z"></path>
-                                                    <path className="color-background" d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z"></path>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </div>
-                            <span className="nav-link-text ms-1">Profile</span>
-                        </a>
-                    </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <a className="nav-link  " href="../pages/sign-in.html">
                             <div className="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -160,7 +116,7 @@ export default function Sidebar() {
                             </div>
                             <span className="nav-link-text ms-1">Sign Up</span>
                         </a>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
             <div className="sidenav-footer mx-3 ">

@@ -1,5 +1,6 @@
-import { faBell, faClock, faCog, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faClock, faCog, faSearch, faShoppingBasket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 export default function SecondaryNav() {
     return (
@@ -29,15 +30,10 @@ export default function SecondaryNav() {
                                 </div>
                             </a>
                         </li>
-                        <li className="nav-item px-3 d-flex align-items-center">
-                            <a href="" className="nav-link text-body p-0">
-                                <FontAwesomeIcon icon={faCog} />
-                            </a>
-                        </li>
                         <li className="nav-item dropdown pe-2 d-flex align-items-center">
-                            <a href="" className="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                <FontAwesomeIcon icon={faBell} />
-                            </a>
+                            <Link to="/cart" className="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <FontAwesomeIcon icon={faShoppingBasket} />
+                            </Link>
                             <ul className="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                                 <li className="mb-2">
                                     <a className="dropdown-item border-radius-md" href="">
