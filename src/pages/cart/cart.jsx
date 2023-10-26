@@ -57,14 +57,23 @@ export default function Cart() {
         console.log(cart);
     }, [cart])
 
+    useEffect(() => {
+        console.log(qr);
+    }, [qr])
+
     function handleRemoveFromCart(product) {
         dispatch(removeFromCart(product))
     }
 
     function handleCheckout(cart) {
         const products = cart.map(item => ({ id: item.id, unit: 1 }))
-        dispatch(checkout({ vendor_id: 1, products }))
-        setQr("PWCFPAD11M")
+        dispatch(checkout({ vendor_id: 1, products })).then((res) => {
+            if (res.code)
+                setQr(res.code)
+            else
+                setQr("GTJ9F3LK36")
+
+        })
     }
 
     return (
